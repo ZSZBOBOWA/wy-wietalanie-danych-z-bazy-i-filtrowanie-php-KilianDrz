@@ -16,10 +16,8 @@ $username = "root";
 $password = "";
 $dbname = "szkola1";
 
-// Tworzenie połączenia
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// Sprawdzanie połączenia
 if (!$conn) {
     die("Błąd połączenia: " . mysqli_connect_error());
 }
@@ -27,7 +25,6 @@ if (!$conn) {
 if(isset($_POST['nazwisko']) && $_POST['nazwisko'] != '') {
     $nazwisko = $_POST['nazwisko'];
 
-    // Zabezpieczenie przed SQL Injection
     $nazwisko = mysqli_real_escape_string($conn, $nazwisko);
 
     $sql = "SELECT * FROM uczniowie WHERE nazwisko='$nazwisko'";
